@@ -36,7 +36,7 @@ en:
         description: A list of all talk proposals made to the vestibule system
     proposal:
       title: Propose a talk
-      chosen: This proposal by %{link} has been chosen by the community to be given at Xebia Mobile's Sessions de Travail.
+      chosen: by %{name}
       withdrawn: This proposal has been withdrawn...
       edit: Edit your proposal
       submit: Submit proposal

@@ -4,7 +4,7 @@
       <%= proposal_div(@proposal) do %>
         <%= page_title @proposal.title %>
         <% if can_show_proposal_author_information?(@proposal) %>
-          <p class="alert alert-notice"><%=t "vestibule.proposal.chosen", link: link_to(@proposal.proposer.name, @proposal.proposer) %></p>
+          <p class="alert alert-info"><%=t "vestibule.proposal.chosen", name: @proposal.proposer %></p>
         <% end %>
 
         <%= proposal_manipulation_actions(@proposal, current_user) %>
