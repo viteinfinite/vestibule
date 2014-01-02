@@ -6,7 +6,7 @@ class Selection < ActiveRecord::Base
   validate :limited_number_of_selections_per_user
 
   def self.limit_per_user
-    8
+    -1
   end
 
   def self.popular
