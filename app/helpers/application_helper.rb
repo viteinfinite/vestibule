@@ -132,7 +132,7 @@ module ApplicationHelper
   end
 
   def can_show_proposal_author_information?(proposal)
-    can?(:see, :agenda) && proposal.confirmed?
+    can?(:see, :agenda)
   end
 
   protected
