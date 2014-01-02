@@ -17,7 +17,7 @@ en:
           link: choose the talks you want to see on the day
         agenda:
           html: Here are the results of the votes; %{link}.
-          link: take a look at the agenda they have generated
+          link: take a look at the charts
         holding:
           html: You can %{link}.
           link: view the selections you made
@@ -63,11 +63,11 @@ en:
     selections:
       title: Selections
       agenda:
-        nav_title: Agenda
+        nav_title: Votes
         title: Chosen Proposals
         description: These are the results of the votes.
         not_visible:
-          html: The agenda isn't visible yet; why not %{link} to cast your votes?
+          html: The votes aren't visible yet; why not %{link} to cast your votes?
           link: sign in
       yours:
         title: Your selections
