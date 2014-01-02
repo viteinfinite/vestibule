@@ -8,7 +8,7 @@ defaults : &defaults
 
 development:
   <<: *defaults
-  database: vestibule_development
+  database: de668oaeupvr44
 
 test:
   <<: *defaults
@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *defaults
-  database: de668oaeupvr44
+  database: vestibule_production
