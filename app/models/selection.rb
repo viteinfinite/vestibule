@@ -20,7 +20,7 @@ class Selection < ActiveRecord::Base
   private
 
   def limited_number_of_selections_per_user
-    if Selection.where(user_id: user.id).count >= self.class.limit_per_user
+    if (self.class.limit_per_user != -1 && (Selection.where(user_id: user.id).count >= self.class.limit_per_user))
       errors.add(:base, "You can only select 8 proposals at a time")
     end
   end
