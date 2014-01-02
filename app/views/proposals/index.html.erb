@@ -1,0 +1,35 @@
+<section>
+  <%= page_title t("vestibule.proposals.title") %>
+  <%= user_can(:make, :proposal) do %>
+    <div class="action">
+      <%= link_to t("vestibule.proposals.propose.one"), new_proposal_path, class: "btn btn-primary btn-large" %>
+    </div>
+  <% end %>
+
+  <ul class="proposals">
+    <% for proposal in @proposals %>
+      <%= content_tag_for :li, proposal do %>
+        <%= link_to proposal.title, proposal %>
+        <span class="age"><%= proposal_update_information proposal %></span>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
+
+<% if @withdrawn_proposals.any? %>
+<section>
+  <p><%= t "vestibule.proposals.withdrawn" %></p>
+  <ul class="proposals">
+    <% for proposal in @withdrawn_proposals %>
+      <%= content_tag_for :li, proposal do %>
+        <%= link_to proposal.title, proposal %>
+        <span class="age"><%= proposal_update_information proposal %></span>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
+<% end %>
+
+<% content_for :head do %>
+  <%= auto_discovery_link_tag :rss, :format => :rss %>
+<% end %>

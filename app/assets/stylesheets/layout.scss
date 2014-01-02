@@ -1,0 +1,63 @@
+header {
+  margin: 1em 0 0 0;
+
+  .brand {
+    margin-bottom: 30px;
+
+    h1 {
+      line-height: 90px;
+      font-family: 'Lobster', arial, serif;
+      font-size: 90px;
+      margin: 0;
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#content {
+  margin-bottom: 4em;
+
+  section {
+    margin-bottom: 2em;
+  }
+}
+
+
+form.button_to {
+  margin-bottom: 0;
+  margin-top: 2px;
+  input {
+    padding: 5px 12px;
+  }
+
+  display: inline;
+
+  div {
+    display: inline;
+  }
+}
+
+form {
+  input[type=text], textarea {
+    width: 100%;
+  }
+
+  .alert-error p {
+    margin-bottom: 0;
+  }
+}
+
+label {
+  .markdown-note {
+    font-size: $fontSizeSmall;
+    color: lighten($grayDark, 15%);
+  }
+}
+
+.the-process {
+  h1 { font-size: $baseFontSize * 2; }
+  h2 { font-size: $baseFontSize * 1.75; }
+}

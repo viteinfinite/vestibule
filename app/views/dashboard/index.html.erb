@@ -1,0 +1,72 @@
+<%= page_title t("vestibule.dashboard.title"), no_h1=true %>
+
+<%= user_can(:make, :selection) do %>
+<h2><%=t "vestibule.dashboard.selections.title" %></h2>
+<p><%=t "vestibule.dashboard.selections.vote.html", :link => link_to(t("vestibule.dashboard.selections.vote.link"), selections_path) %></p>
+<% end %>
+<%= user_can(:see, :agenda) do %>
+<h2><%=t "vestibule.dashboard.selections.title" %></h2>
+<p><%=t "vestibule.dashboard.selections.agenda.html", :link => link_to(t("vestibule.dashboard.selections.agenda.link"), selections_path) %></p>
+<% end %>
+<%= user_cannot(:see, :agenda) do %>
+<%= user_can(:see, :selection) do %>
+<h2><%=t "vestibule.dashboard.selections.title" %></h2>
+<p><%=t "vestibule.dashboard.selections.holding.html", :link => link_to(t("vestibule.dashboard.selections.holding.link"), selections_path) %></p>
+<% end %>
+<% end %>
+
+<h2><%=t "vestibule.dashboard.your_proposals.title" %></h2>
+<p><%=t "vestibule.dashboard.your_proposals.html", :link => link_to(t("vestibule.dashboard.your_proposals.link"), anonymous_proposals_path) %></p>
+<% if @your_proposals.present? %>
+  <ul id="your-proposals" class="proposals">
+    <% @your_proposals.each do |proposal| %>
+      <%= content_tag_for(:li, proposal) do%>
+        <%= link_to proposal.title, proposal %>
+        <span class="age"><%= time_ago_in_words proposal.last_modified %> old</span>
+        <% if proposal.new_suggestions.any? %>
+          <%= pluralize proposal.new_suggestions.count, "new suggestion" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= user_can(:make, :proposal) do %>
+<p><%= link_to t(@your_proposals.present? ? "vestibule.proposals.propose.another" : "vestibule.proposals.propose.one"), new_proposal_path, class: "btn btn-primary" %></p>
+<% end %>
+
+<% if @proposals_you_should_look_at.present? %>
+  <h2><%=t "vestibule.dashboard.suggestions.consider_suggesting" %></h2>
+  <ul id="you-should-look-at-these" class="proposals">
+    <% @proposals_you_should_look_at.each do |proposal| %>
+      <%= content_tag_for :li, proposal do %>
+        <%= link_to proposal.title, proposal %>
+        <span class="age">updated <%= time_ago_in_words proposal.last_modified %> ago</span>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @proposals_that_have_changed.present? %>
+  <h2><%=t "vestibule.dashboard.suggestions.updated_proposals" %></h2>
+  <ul id="things-have-changed" class="proposals">
+    <% @proposals_that_have_changed.each do |proposal| %>
+      <%= content_tag_for :li, proposal do %>
+        <%= link_to proposal.title, proposal %>
+        <span class="age">updated <%= time_ago_in_words proposal.last_modified %> ago</span>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @proposals_that_have_been_withdrawn.present? %>
+  <h2><%=t "vestibule.dashboard.suggestions.withdrawn_proposals" %></h2>
+  <ul id="things-have-ended" class="proposals">
+    <% @proposals_that_have_been_withdrawn.each do |proposal| %>
+      <%= content_tag_for :li, proposal do %>
+        <%= link_to proposal.title, proposal %>
+        <span class="age">updated <%= time_ago_in_words proposal.last_modified %> ago</span>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

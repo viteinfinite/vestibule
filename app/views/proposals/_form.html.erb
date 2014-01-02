@@ -1,0 +1,10 @@
+<%= simple_form_for @proposal do |f| %>
+  <% if notification = f.error_notification %>
+    <div class="alert alert-error fade in">
+      <%= notification %>
+    </div>
+  <% end %>
+  <%= f.input :title %>
+  <%= f.input :description, as: :markdown %>
+  <%= f.button :submit, f.object.new_record? ? t("vestibule.proposal.submit") : t("vestibule.proposal.update"), class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,27 @@
+ul#selections, ul#available_selections {
+  list-style: none;
+  margin-left: 0;
+}
+ol#the_chosen_ones li {
+  margin-bottom: 10px;
+}
+
+form.new_selection {
+  display: inline;
+
+  div {
+    display: inline;
+  }
+}
+
+.selection_proposal {
+  margin-bottom: 10px;
+
+  a {
+    margin-left: 5px;
+  }
+}
+
+.agenda {
+  margin-bottom: 2em;
+}

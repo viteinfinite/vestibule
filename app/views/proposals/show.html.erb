@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="span6">
+    <div id="proposal">
+      <%= proposal_div(@proposal) do %>
+        <%= page_title @proposal.title %>
+        <% if can_show_proposal_author_information?(@proposal) %>
+          <p class="alert alert-notice"><%=t "vestibule.proposal.chosen", link: link_to(@proposal.proposer.name, @proposal.proposer) %></p>
+        <% end %>
+
+        <%= proposal_manipulation_actions(@proposal, current_user) %>
+        <p class="age"><%= proposal_update_information @proposal %></p>
+
+        <% if @proposal.withdrawn? %><h2 class="withdrawl_explanation"><%=t "vestibule.proposal.withdrawn" %></h2><% end %>
+        <div class="description"><%= markdown @proposal.description %></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="span5 offset1">
+    <div id="suggestions">
+      <h2><%=t "vestibule.proposal.suggestions.title" %></h2>
+      <%= user_can(:make, :suggestion) do %>
+        <% if current_user == @proposal.proposer %>
+          <p><%=t "vestibule.proposal.suggestions.make.your" %></p>
+        <% else %>
+          <p><%=t "vestibule.proposal.suggestions.make.other" %></p>
+        <% end %>
+
+        <%= simple_form_for [@proposal, @suggestion] do |f| %>
+          <% if notification = f.error_notification %>
+            <div class="alert alert-error fade in">
+              <%= notification %>
+            </div>
+          <% end %>
+
+          <%= f.input :body, as: :markdown, input_html: {rows: 10} %>
+          <%= f.button :submit, t("vestibule.proposal.suggestions.make.title"), class: "btn" %>
+        <% end %>
+      <% end %>
+
+      <ul class="suggestions">
+        <% @proposal.suggestions.latest.each do |suggestion| %>
+          <%= content_tag_for(:li, suggestion) do %>
+            <p class="author">
+              <% if suggestion.author == @proposal.proposer %>
+                <% if current_user == @proposal.proposer %>
+                  <%=t "vestibule.proposal.suggestions.attribution.your" %>
+                <% else %>
+                  <%=t "vestibule.proposal.suggestions.attribution.proposal_author" %>
+                <% end %>
+              <% else %>
+                <%=t("vestibule.proposal.suggestions.attribution.other", :suggestor => render('shared/user', :user => suggestion.author)).html_safe %>
+              <% end %>
+              <span class="age"><%= time_ago_in_words suggestion.updated_at %> ago</span>
+            </p>
+            <section class="body"><%= markdown suggestion.body %></section>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% content_for :head do %>
+  <%= auto_discovery_link_tag :rss, :format => :rss %>
+<% end %>
