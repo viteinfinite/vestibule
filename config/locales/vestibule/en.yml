@@ -19,8 +19,8 @@ en:
           html: The community has spoken; %{link}.
           link: take a look at the agenda they have generated
         holding:
-          html: The time for voting is over! We're collating all the selections and preparing the agenda. You can still %{link}.
-          link: view selections you made
+          html: You can %{link}.
+          link: view the selections you made
       suggestions:
         consider_suggesting: You should consider giving some suggestions about these proposals
         updated_proposals: These proposals have been updated since you last made a suggestion
@@ -65,7 +65,7 @@ en:
       agenda:
         nav_title: Agenda
         title: Chosen Proposals
-        description: There will be <strong>8</strong> talks given.
+        description: These are the results of the votes.
         not_visible:
           html: The agenda isn't visible yet; why not %{link} to cast your votes?
           link: sign in

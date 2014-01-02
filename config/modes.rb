@@ -45,6 +45,18 @@ Vestibule::Application.modes.define do
     can :add, :motivation
   end
 
+  mode :forever do
+    can :make, :proposal
+    can :change, :proposal
+    can :make, :suggestion
+    can :withdraw, :proposal
+    can :make, :selection
+    can :see, :selection
+    can :see, :agenda
+    can :see, :motivation
+    can :add, :motivation
+  end
+
   mode :archive do
     can :see, :agenda
     can :see, :selection
