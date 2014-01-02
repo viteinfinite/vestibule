@@ -1,0 +1,15 @@
+a {
+	color: #6A205F;
+}
+
+a:hover {
+	color: darken(#005580, 15%);
+}
+
+.nav-pills > .active > a {
+	background-color: #6A205F;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+	background-color: #6A205F;
+}
