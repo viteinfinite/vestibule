@@ -7,7 +7,7 @@ en:
     dashboard:
       title: Dashboard
       your_proposals:
-        title: "Your proposals"
+        title: "Your talk proposals"
         html: " "
         link: Read more about anonymisation
       selections:
@@ -22,7 +22,7 @@ en:
           html: You can %{link}.
           link: view the selections you made
       suggestions:
-        consider_suggesting: You should consider giving some suggestions about these proposals
+        consider_suggesting: Talks proposed by your colleagues
         updated_proposals: These proposals have been updated since you last made a suggestion
         withdrawn_proposals: These proposals you made suggestions on have been withdrawn
         planned_proposals: These proposals you made suggestions on have been planned
@@ -95,7 +95,7 @@ en:
           other: "%{name} hasn't said what they hope to get out of Xebia Mobile's Sessions de Travail yet."
       proposals:
         your:
-          title: "Your proposals"
+          title: "Your talk proposals"
           anonymised:
             html: ""
             link: Read more about anonymisation
