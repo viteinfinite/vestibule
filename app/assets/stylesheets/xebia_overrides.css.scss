@@ -1,3 +1,17 @@
+header .brand h1, h2 {
+	font-family: 'Helvetica Neue', arial, serif !important;	
+}
+
+header .brand h1 {
+	font-weight: 200;
+}
+
+h2 {
+	font-weight: 400;
+	margin-top: 30px;
+	color: #3D3D3D;
+}
+
 a {
 	color: #6A205F;
 }
@@ -12,4 +26,12 @@ a:hover {
 
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
 	background-color: #6A205F;
+}
+
+.proposal-nav-pills li {
+	margin-right: 4px;
+}
+
+.proposal-nav-pills li a {
+	margin-top: 0px;
 }

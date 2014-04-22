@@ -16,6 +16,8 @@ class Proposal < ActiveRecord::Base
 
   scope :active, where(withdrawn: false)
   scope :withdrawn, where(withdrawn: true)
+  scope :planned, where(planned: true)
+  scope :unplanned, where(planned: false)
 
   scope :in_modification_order, ->() {
     # select proposals.id, greatest(proposals.updated_at, max(suggestions.updated_at)) from proposals left outer join
@@ -51,6 +53,14 @@ class Proposal < ActiveRecord::Base
 
   def withdraw!
     update_attribute(:withdrawn, true)
+  end
+
+  def plan!
+    update_attribute(:planned, true)
+  end
+
+  def unplan!
+    update_attribute(:planned, false)
   end
 
   def confirm!

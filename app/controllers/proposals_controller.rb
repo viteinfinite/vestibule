@@ -6,7 +6,8 @@ class ProposalsController < ApplicationController
 
   def index
     @withdrawn_proposals = Proposal.withdrawn.all
-    respond_with @proposals = Proposal.active.order('created_at desc').all
+    @planned_proposals = Proposal.planned.all
+    respond_with @proposals = Proposal.active.unplanned.order('created_at desc').all
   end
 
   def show
@@ -46,6 +47,18 @@ class ProposalsController < ApplicationController
     proposal = current_user.proposals.find(params[:id])
     proposal.withdraw!
     redirect_to proposal_path(proposal), alert: "Your proposal has been withdrawn"
+  end
+
+  def plan
+    proposal = current_user.proposals.find_by_id(params[:id])
+    proposal.plan!
+    redirect_to proposal_path(proposal), alert: "Your proposal has been planned"
+  end
+
+  def unplan
+    proposal = current_user.proposals.find_by_id(params[:id])
+    proposal.unplan!
+    redirect_to proposal_path(proposal), alert: "Your proposal has been unplanned"
   end
 
   private

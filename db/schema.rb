@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315135423) do
+ActiveRecord::Schema.define(:version => 20140422155723) do
 
   create_table "proposals", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130315135423) do
     t.text     "description"
     t.boolean  "withdrawn",   :default => false
     t.boolean  "confirmed",   :default => false, :null => false
+    t.boolean  "planned",     :default => false, :null => false
   end
 
   create_table "selections", :force => true do |t|

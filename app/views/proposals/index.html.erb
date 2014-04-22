@@ -16,11 +16,11 @@
   </ul>
 </section>
 
-<% if @withdrawn_proposals.any? %>
+<% if @planned_proposals.any? %>
 <section>
-  <p><%= t "vestibule.proposals.withdrawn" %></p>
+  <p><%= t "vestibule.proposals.planned" %></p>
   <ul class="proposals">
-    <% for proposal in @withdrawn_proposals %>
+    <% for proposal in @planned_proposals %>
       <%= content_tag_for :li, proposal do %>
         <%= link_to proposal.title, proposal %>
         <span class="age"><%= proposal_update_information proposal %></span>

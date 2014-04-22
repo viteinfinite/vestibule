@@ -6,5 +6,6 @@ class DashboardController < ApplicationController
     @proposals_you_should_look_at = current_user.proposals_you_should_look_at
     @proposals_that_have_changed = current_user.proposals_that_have_changed
     @proposals_that_have_been_withdrawn = current_user.proposals_that_have_been_withdrawn
+    @proposals_that_have_been_planned = current_user.proposals_that_have_been_planned
   end
 end

@@ -19,3 +19,24 @@ Build Status
 
 [Ruby Manor 3]: http://rubymanor.org/3
 [plus-ones]: http://interblah.net/regarding-plus-ones
+
+
+Launching locally
+-----------------
+1. Launch postgres
+
+	```pg_ctl -D /usr/local/var/postgres/ -l /usr/local/var/postgres/server.log start```
+
+2. Create the postgre users/dbs if needed
+
+3. Launch rake
+
+	```bundle exec rake```
+
+4. Migrate the tables
+
+	```bundle exec rake db:migrate```
+
+5. Launch foreman
+
+	```COOKIE_SECRET='5563022c166aae00f2c39151fdd4eaca' GITHUB_KEY='CHANGEME' GITHUB_SECRET='CHANGEME' foreman start```

@@ -116,10 +116,15 @@ module ApplicationHelper
 
   def proposal_manipulation_actions(proposal, user)
     if proposal.proposed_by?(user) && (can?(:change, :proposal) || can?(:withdraw, :proposal))
-      content_tag(:ul, class: 'nav nav-pills') do
+      content_tag(:ul, class: 'nav nav-pills proposal-nav-pills') do
         out = []
         out << content_tag(:li, link_to('Edit proposal', edit_proposal_path(@proposal), class: 'btn btn-primary')) if can?(:change, :proposal)
-        out << content_tag(:li, button_to('Withdraw proposal', withdraw_proposal_path(@proposal), class: 'btn btn-danger')) if can?(:withdraw, :proposal)
+        if !proposal.planned?
+          out << content_tag(:li, button_to('Withdraw proposal', withdraw_proposal_path(@proposal), class: 'btn btn-danger')) if can?(:withdraw, :proposal)
+          out << content_tag(:li, button_to('Plan proposal', plan_proposal_path(@proposal), class: 'btn btn-success')) if can?(:plan, :proposal)
+        else
+          out << content_tag(:li, button_to('Unplan proposal', unplan_proposal_path(@proposal), class: 'btn btn-danger')) if can?(:unplan, :proposal)
+        end
         out.join("\n").html_safe
       end
     end

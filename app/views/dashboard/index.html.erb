@@ -74,3 +74,15 @@
     <% end %>
   </ul>
 <% end %>
+
+<% if @proposals_that_have_been_planned.present? %>
+  <h2><%=t "vestibule.dashboard.suggestions.planned_proposals" %></h2>
+  <ul id="things-have-ended" class="proposals">
+    <% @proposals_that_have_been_planned.each do |proposal| %>
+      <%= content_tag_for :li, proposal do %>
+        <%= link_to proposal.title, proposal %>
+        <span class="age">updated <%= time_ago_in_words proposal.last_modified %> ago</span>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

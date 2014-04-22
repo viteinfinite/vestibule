@@ -50,6 +50,8 @@ Vestibule::Application.modes.define do
     can :change, :proposal
     can :make, :suggestion
     can :withdraw, :proposal
+    can :plan, :proposal
+    can :unplan, :proposal
     can :make, :selection
     can :see, :selection
     can :see, :agenda
@@ -63,5 +65,5 @@ Vestibule::Application.modes.define do
     can :see, :motivation
   end
 
-  default :cfp
+  default :forever
 end

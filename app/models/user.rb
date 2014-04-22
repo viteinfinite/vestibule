@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     proposals_of_interest.withdrawn.in_modification_order.all
   end
 
+  def proposals_that_have_been_planned
+    proposals_of_interest.planned.in_modification_order.all
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.name = auth["info"]["name"] || auth['info']['nickname']
