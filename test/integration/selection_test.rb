@@ -29,7 +29,7 @@ class SelectionTest < IntegrationTestCase
         should 'not see a call to action on their dashboard asking them to make selections' do
           visit '/'
           within '#content' do
-            refute page.has_link?('Choose the talks you want to see on the day')
+            refute page.has_link?('Choose the talks you want to be planned')
           end
         end
 
@@ -53,7 +53,7 @@ class SelectionTest < IntegrationTestCase
         should 'not see a call to action on their dashboard asking them to make selections' do
           visit '/'
           within '#content' do
-            refute page.has_link?('Choose the talks you want to see on the day')
+            refute page.has_link?('Choose the talks you want to be planned')
           end
         end
 
@@ -83,7 +83,7 @@ class SelectionTest < IntegrationTestCase
         should 'see a call to action on their dashboard asking them to make selections' do
           visit '/'
           within '#content' do
-            assert page.has_link?('choose the talks you want to see on the day')
+            assert page.has_link?('choose the talks you want to be planned')
           end
         end
 
@@ -144,7 +144,7 @@ class SelectionTest < IntegrationTestCase
         should 'not see a call to action on their dashboard asking them to make selections' do
           visit '/'
           within '#content' do
-            refute page.has_link?('choose the talks you want to see on the day')
+            refute page.has_link?('choose the talks you want to be planned')
           end
         end
 
@@ -214,7 +214,7 @@ class SelectionTest < IntegrationTestCase
         should 'not see a call to action on their dashboard asking them to make selections' do
           visit '/'
           within '#content' do
-            refute page.has_link?('choose the talks you want to see on the day')
+            refute page.has_link?('choose the talks you want to to be planned')
           end
         end
 

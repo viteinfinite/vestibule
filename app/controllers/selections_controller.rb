@@ -8,7 +8,7 @@ class SelectionsController < ApplicationController
       @top_proposals = Selection.popular.select { |count, proposal| !proposal.withdrawn? }
     end
     if current_user && can?(:make, :selection)
-      @proposals = Proposal.available_for_selection_by(current_user)
+      @proposals = Proposal.unplanned.available_for_selection_by(current_user)
     end
   end
 

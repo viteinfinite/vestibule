@@ -14,7 +14,7 @@ en:
         title: Selections
         vote:
           html: It is time for you to %{link}.
-          link: choose the talks you want to see on the day
+          link: choose the talks you want to be planned
         agenda:
           html: Here are the results of the votes; %{link}.
           link: take a look at the charts
